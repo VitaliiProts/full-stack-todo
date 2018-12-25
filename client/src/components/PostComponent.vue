@@ -1,7 +1,7 @@
 <template>
   <section>
     <label for="create-post">Say something...</label>
-    <input type="text" placeholder="Create post" v-model="text">
+    <input type="text" placeholder="Create post" v-model="text" @keyup.enter="createPost">    
     <button @click="createPost">Create post!</button>
     <hr>
     <p v-if="error">{{ error }}</p>
