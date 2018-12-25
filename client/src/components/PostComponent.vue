@@ -18,15 +18,15 @@
 </template>
 
 <script>
-import PostService from '../PostService.js';
+import PostService from "../PostService.js";
 
 export default {
   name: "PostComponent",
   data() {
     return {
       posts: [],
-      error: '',
-      text: '',
+      error: "",
+      text: ""
     };
   },
   async created() {
@@ -45,11 +45,10 @@ export default {
       await PostService.deletePost(id);
       this.posts = await PostService.getPosts();
     }
-  },
+  }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
 </style>
