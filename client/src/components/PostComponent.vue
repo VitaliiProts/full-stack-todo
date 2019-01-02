@@ -1,6 +1,6 @@
-<template>
-  <section>
-    <label for="create-post">Say something...</label>
+<template class="wrapper">
+  <section class="container">
+    <h1>todo</h1>
     <input type="text" placeholder="Create post" v-model="text" @keyup.enter="createPost">    
     <button @click="createPost">Create post!</button>
     <hr>
@@ -9,46 +9,16 @@
         :item="post"
         :index="index"
         :key="post._id"
-        @dblclick="deletePost(post._id)"
     >
-    <span>{{ `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()}` }}</span>
-    <p>{{ post.text }}</p>
+    <div>
+      <span>{{ `${post.createdAt.getDate()}/${post.createdAt.getMonth()}/${post.createdAt.getFullYear()} - ` }}</span>
+      <span>{{ post.text }}</span>
+      <button @click="deletePost(post._id)">x</button>
+    </div>
     </div>
   </section>
 </template>
 
-<script>
-import PostService from "../PostService.js";
-
-export default {
-  name: "PostComponent",
-  data() {
-    return {
-      posts: [],
-      error: "",
-      text: ""
-    };
-  },
-  async created() {
-    try {
-      this.posts = await PostService.getPosts();
-    } catch (err) {
-      this.error = err.message;
-    }
-  },
-  methods: {
-    async createPost() {
-      await PostService.insertPost(this.text);
-      this.posts = await PostService.getPosts();
-    },
-    async deletePost(id) {
-      await PostService.deletePost(id);
-      this.posts = await PostService.getPosts();
-    }
-  }
-};
-</script>
-
+<script src="./index.js"></script>
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-</style>
+<style src="./index.scss" scoped lang="scss"></style>
