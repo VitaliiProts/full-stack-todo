@@ -1,8 +1,7 @@
 <template class="wrapper">
   <section class="container">
     <h1>todo</h1>
-    <input type="text" placeholder="Create post" v-model="text" @keyup.enter="createPost">    
-    <button @click="createPost">Create post!</button>
+    <input type="text" placeholder="Create post" v-model="text" @keyup.enter="createPost" class="new-todo">    
     <hr>
     <p v-if="error">{{ error }}</p>
     <div v-for="(post, index) in posts"

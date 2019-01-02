@@ -24,6 +24,6 @@ export default {
     async deletePost(id) {
       await PostService.deletePost(id);
       this.posts = await PostService.getPosts();
-    }
+    },
   }
 };
